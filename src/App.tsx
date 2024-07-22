@@ -1,17 +1,23 @@
 import React from 'react';
-import GoogleSlideWidget from './components/GoogleSlideWidget';
+import GoogleSlideWidget from './components/google-slide-widget/GoogleSlideWidget';
 import PomodoroTimer from './components/PomodoroTimer';
 
 const App: React.FC = () => {
   return (
-    <div className="h-screen flex flex-col">
-      <header className="bg-gray-800 text-white p-4 text-center">
-        <h1 className="text-3xl">Digital Notice Board</h1>
+    <div className="h-screen flex flex-col bg-gray-100">
+      <header className="bg-gray-800 text-white p-6 shadow-lg">
+        <h1 className="text-4xl font-bold">HyperVerge - Home</h1>
       </header>
-      <main className="flex-grow p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <GoogleSlideWidget />
-        <PomodoroTimer />
-        {/* Add more widgets here as needed */}
+      <main className="flex-grow p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 auto-rows-auto">
+        <div className="lg:col-span-1 flex flex-col space-y-6">
+          <PomodoroTimer />
+        </div>
+        <div className="lg:col-span-2 flex flex-col space-y-6">
+          <GoogleSlideWidget />
+        </div>
+        <div className="lg:col-span-1 flex flex-col space-y-6">
+          {/* Placeholder for future widgets */}
+        </div>
       </main>
     </div>
   );
