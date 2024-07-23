@@ -1,6 +1,7 @@
 import React from 'react';
 import GoogleSlideWidget from './components/google-slide-widget/GoogleSlideWidget';
-import PomodoroTimer from './components/pomodoro-timer/PomodoroTimer';
+import PomodoroTimer from './components/pomodoro-timer-widget/PomodoroTimer';
+import MusicWidget from './components/music-widget/MusicWidget';
 
 const App: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ const App: React.FC = () => {
           <GoogleSlideWidget />
         </div>
         <div className="lg:col-span-1 flex flex-col space-y-6">
-          {/* Placeholder for future widgets */}
+          <MusicWidget />
         </div>
       </main>
     </div>
