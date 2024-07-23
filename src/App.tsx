@@ -1,6 +1,6 @@
 import React from 'react';
 import GoogleSlideWidget from './components/google-slide-widget/GoogleSlideWidget';
-import PomodoroTimer from './components/PomodoroTimer';
+import PomodoroTimer from './components/pomodoro-timer/PomodoroTimer';
 
 const App: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const App: React.FC = () => {
       <header className="bg-gray-800 text-white p-6 shadow-lg">
         <h1 className="text-4xl font-bold">HyperVerge - Home</h1>
       </header>
-      <main className="flex-grow p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 auto-rows-auto">
+      <main className="flex-grow p-6 grid grid-cols-1 lg:grid-cols-4 gap-4 auto-rows-auto">
         <div className="lg:col-span-1 flex flex-col space-y-6">
           <PomodoroTimer />
         </div>
