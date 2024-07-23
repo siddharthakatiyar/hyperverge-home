@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const GoogleSlideWidget: React.FC = () => {
   return (
@@ -9,11 +9,11 @@ const GoogleSlideWidget: React.FC = () => {
           frameBorder="0"
           className="absolute top-0 left-0 w-full h-full"
           allowFullScreen
-          title='google-slide'
+          title="google-slide"
         ></iframe>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default GoogleSlideWidget;
+export default GoogleSlideWidget

@@ -1,7 +1,7 @@
-import React from 'react';
-import GoogleSlideWidget from './components/google-slide-widget/GoogleSlideWidget';
-import PomodoroTimer from './components/pomodoro-timer-widget/PomodoroTimer';
-import MusicWidget from './components/music-widget/MusicWidget';
+import React from 'react'
+import GoogleSlideWidget from './components/google-slide-widget/GoogleSlideWidget'
+import PomodoroTimer from './components/pomodoro-timer-widget/PomodoroTimer'
+import MusicWidget from './components/music-widget/MusicWidget'
 
 const App: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ const App: React.FC = () => {
         </div>
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

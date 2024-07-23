@@ -1,10 +1,8 @@
-import React from "react";
-import SpotifyWidget from "./SpotifyWidget";
+import React from 'react'
+import SpotifyWidget from './SpotifyWidget'
 
 const MusicWidget: React.FC = () => {
-    return (
-        <SpotifyWidget />
-    )
-};
+  return <SpotifyWidget />
+}
 
-export default MusicWidget;
+export default MusicWidget
