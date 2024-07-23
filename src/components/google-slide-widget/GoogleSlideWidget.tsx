@@ -9,6 +9,7 @@ const GoogleSlideWidget: React.FC = () => {
           frameBorder="0"
           className="absolute top-0 left-0 w-full h-full"
           allowFullScreen
+          title='google-slide'
         ></iframe>
       </div>
     </div>
