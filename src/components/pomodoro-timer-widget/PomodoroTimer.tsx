@@ -67,7 +67,7 @@ const PomodoroTimer = () => {
 
   return (
     <div
-      className="h-auto flex flex-col justify-center items-center bg-cover bg-center p-4"
+      className="h-auto flex flex-col justify-center items-center bg-cover bg-center p-4 rounded-lg"
       style={{
         backgroundImage: 'url(/background/pomodoro.jpeg)',
         fontFamily: 'Poppins, sans-serif'

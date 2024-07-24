@@ -32,21 +32,29 @@ const PollingWidget: React.FC = () => {
   };
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="text-red-600">{error}</div>;
   }
 
   return (
-    <div>
-      <h2>Available Poll</h2>
+    <div className="p-4 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-semibold mb-4">Available Poll</h2>
       {poll ? (
         <div>
-          <h3>{poll[0][0]}</h3>
-          <button onClick={() => handleVote(1)}>
-            {poll[0][1]} ({poll[1][3]})
-          </button>
-          <button onClick={() => handleVote(2)}>
-            {poll[0][2]} ({poll[1][4]})
-          </button>
+          <h3 className="text-xl font-medium mb-2">{poll[1][0]}</h3>
+          <div className="flex space-x-4">
+            <button
+              onClick={() => handleVote(1)}
+              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
+            >
+              {poll[1][1]} ({poll[1][3]})
+            </button>
+            <button
+              onClick={() => handleVote(2)}
+              className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700 transition"
+            >
+              {poll[1][2]} ({poll[1][4]})
+            </button>
+          </div>
         </div>
       ) : (
         <div>Loading...</div>

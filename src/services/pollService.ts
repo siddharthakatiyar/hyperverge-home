@@ -19,7 +19,6 @@ export const submitVote = async (optionIndex: number) => {
   try {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values:batchUpdate?key=${API_KEY}`;
     const pollData = await getPolls();
-    const votesRange = optionIndex === 1 ? 'Sheet1!D2' : 'Sheet1!E2'; // Adjust as per your sheet structure
     const currentVotes = parseInt(pollData[1][optionIndex + 2], 10);
     const updatedVotes = currentVotes + 1;
 
