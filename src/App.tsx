@@ -3,6 +3,7 @@ import GoogleSlideWidget from './components/google-slide-widget/GoogleSlideWidge
 import PomodoroTimer from './components/pomodoro-timer-widget/PomodoroTimer'
 import MusicWidget from './components/music-widget/MusicWidget'
 import PollingWidget from './components/polling-widget/PollingWidget'
+import TodayTasksWidget from './components/today-tasks-widget/TodayTasksWidget'
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,9 @@ const App: React.FC = () => {
         </div>
         <div className="lg:col-span-1 flex flex-col space-y-6">
           <MusicWidget />
+        </div>
+        <div className="lg:col-span-1 flex flex-col space-y-6">
+          <TodayTasksWidget />
         </div>
       </main>
     </div>
