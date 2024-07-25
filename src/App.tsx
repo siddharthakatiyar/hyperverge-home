@@ -6,6 +6,7 @@ import PollingWidget from './components/polling-widget/PollingWidget';
 import TodayTasksWidget from './components/today-tasks-widget/TodayTasksWidget';
 import GoogleMeetWidget from './components/google-meet-widget/GoogleMeetWidget';
 import QuoteWidget from './components/quote-widget/QuoteWidget';
+import NotionWidget from './components/notion-widget/NotionWidget';
 
 const App: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         </div>
         <div className="lg:col-span-2 flex flex-col space-y-6">
           <GoogleSlideWidget />
+          <NotionWidget />
         </div>
         <div className="lg:col-span-1 flex flex-col space-y-6">
           <MusicWidget />
