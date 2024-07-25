@@ -1,47 +1,73 @@
 import React, { useEffect, useState } from 'react';
-import { getFormLink } from '../../services/pollService';
+import { getPolls, submitVote } from '../../services/pollService';
 
-const GoogleFormWidget: React.FC = () => {
-  const [formLink, setFormLink] = useState<string | null>(null);
+const PollingWidget: React.FC = () => {
+  const [poll, setPoll] = useState<string[][] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchFormLink = async () => {
+    const fetchPoll = async () => {
       try {
-        const link = await getFormLink();
-        setFormLink(link[0]);
+        const pollData = await getPolls();
+        setPoll(pollData);
       } catch (err) {
-        setError('Error fetching Google Form link.');
+        setError('Error fetching poll.');
         console.error(err);
       }
     };
 
-    fetchFormLink();
+    fetchPoll();
   }, []);
+
+  const handleVote = async (optionIndex: number) => {
+    try {
+      await submitVote(optionIndex);
+      // Fetch updated poll data
+      const updatedPoll = await getPolls();
+      setPoll(updatedPoll);
+    } catch (err) {
+      setError('Error submitting vote.');
+      console.error(err);
+    }
+  };
 
   if (error) {
     return <div className="text-red-600">{error}</div>;
   }
 
+  if (!poll) {
+    return <div>Loading...</div>;
+  }
+
+  const question = poll[1][0];
+  const options = poll[1].slice(1, 5);
+  const counts = poll[1].slice(5, 9);
+
   return (
-    <div className="flex justify-center p-4 bg-white shadow-lg rounded-lg">
-      {formLink ? (
-        <iframe
-          src={formLink}
-          style={{ width: '100%', height: '100%', maxHeight: '800px' }}
-          frameBorder="0"
-          marginHeight={0}
-          marginWidth={0}
-          className="w-full h-full"
-          title="Google Form"
-        >
-          Loading…
-        </iframe>
-      ) : (
-        <div>Loading...</div>
-      )}
+    <div className="h-auto flex flex-col justify-center items-center bg-cover bg-center p-4" style={{ backgroundImage: 'url(/background/pomodoro.jpeg)', fontFamily: 'Poppins, sans-serif' }}>
+      <h2 className="text-2xl font-semibold mb-4 text-white">Available Poll</h2>
+      <h3 className="text-xl font-medium mb-2 text-white">{question}</h3>
+      <div className="flex flex-col space-y-2 w-full px-4">
+        {options.map((option, index) => option && (
+          <button
+            key={index}
+            onClick={() => handleVote(index + 1)}
+            className={`py-2 px-4 rounded-full hover:bg-opacity-75 transition text-white text-lg font-bold ${
+              index === 0
+                ? 'bg-blue-500'
+                : index === 1
+                ? 'bg-green-500'
+                : index === 2
+                ? 'bg-red-500'
+                : 'bg-yellow-500'
+            }`}
+          >
+            {option} ({counts[index]})
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default GoogleFormWidget;
+export default PollingWidget;
