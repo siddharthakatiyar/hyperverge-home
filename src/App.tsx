@@ -7,6 +7,7 @@ import TodayTasksWidget from './components/today-tasks-widget/TodayTasksWidget';
 // import GoogleMeetWidget from './components/google-meet-widget/GoogleMeetWidget';
 import QuoteWidget from './components/quote-widget/QuoteWidget';
 import AnnouncementsWidget from './components/announcements-widget/AnnouncementsWidget';
+import ClockWidget from './components/clock-widget/ClockWidget';
 
 
 const App: React.FC = () => {
@@ -31,6 +32,7 @@ const App: React.FC = () => {
         <div className="lg:col-span-1 flex flex-col space-y-6">
           <MusicWidget />
           <TodayTasksWidget />
+          <ClockWidget />
         </div>
       </main>
     </div>
