@@ -1,34 +1,43 @@
-import React from 'react';
-import Marquee from 'react-marquee-slider';
-import { v4 as uuidv4 } from 'uuid';
-
-const announcements = [
-  "• Welcome to the HyperVerge home page!",
-  "• Don't forget to submit your daily report.",
-  "• Team meeting at 3 PM today.",
-  "• Check out the new features in the Pomodoro timer.",
-  "• Upcoming event: HyperVerge Hackathon on Aug 10th.",
-  "• Remember to review the new project guidelines.",
-  "• Happy Birthday to Madhav!",
-];
+import React, { useEffect, useState } from 'react';
+import { ReactComponent as AlertIcon } from '../../assets/icons/alert.svg';
 
 const AnnouncementsWidget: React.FC = () => {
+  const [announcements, setAnnouncements] = useState<string[]>([
+    'Welcome to the HyperVerge home page!',
+    "Don't forget to submit your daily report.",
+    'Team meeting on Friday at 3 PM.'
+  ]);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+
+  const handlePopupClick = () => {
+    setShowPopup(!showPopup);
+  };
+
+  useEffect(() => {
+    const notification = announcements.length > 0;
+    if (notification) {
+      setTimeout(() => setShowPopup(true), 2000);
+    }
+  }, [announcements]);
+
   return (
-    <div className="p-4 bg-blue-100 shadow-lg rounded-lg text-center">
-      <h2 className="text-2xl font-semibold mb-4">Announcements</h2>
-      <div className="h-12 overflow-hidden relative">
-      <Marquee velocity={25} resetAfterTries={200} scatterRandomly={false} direction="ltr" onInit={() => {}}
-    onFinish={() => {}}>
-          {announcements.map((announcement) => (
-            <div
-              key={uuidv4()}
-              className="mx-4 text-lg font-medium text-blue-900 whitespace-nowrap"
-            >
-              {announcement}
-            </div>
-          ))}
-        </Marquee>
+    <div className="relative">
+      <div 
+        className="p-2 cursor-pointer" 
+        onClick={handlePopupClick}
+      >
+        <AlertIcon className="h-6 w-6 text-[#E2E2B6] fill-current" />
       </div>
+      {showPopup && (
+        <div className="absolute top-12 right-0 w-64 p-4 bg-[#03346E] text-[#E2E2B6] rounded-lg shadow-lg z-10">
+          <h2 className="text-lg font-bold mb-2">Announcements</h2>
+          <ul className="list-disc list-inside">
+            {announcements.map((announcement, index) => (
+              <li key={index} className="mb-2">{announcement}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

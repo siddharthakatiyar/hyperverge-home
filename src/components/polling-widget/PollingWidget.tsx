@@ -22,7 +22,6 @@ const PollingWidget: React.FC = () => {
   const handleVote = async (optionIndex: number) => {
     try {
       await submitVote(optionIndex);
-      // Fetch updated poll data
       const updatedPoll = await getPolls();
       setPoll(updatedPoll);
     } catch (err) {
@@ -44,25 +43,17 @@ const PollingWidget: React.FC = () => {
   const counts = poll[1].slice(5, 9);
 
   return (
-    <div className="h-auto flex flex-col justify-center items-center bg-cover bg-center p-4" style={{ backgroundImage: 'url(/background/pomodoro.jpeg)', fontFamily: 'Poppins, sans-serif' }}>
-      <h2 className="text-2xl font-semibold mb-4 text-white">Available Poll</h2>
-      <h3 className="text-xl font-medium mb-2 text-white">{question}</h3>
+    <div className="h-auto flex flex-col justify-center items-center bg-cover bg-center p-4 rounded-lg bg-[#304050] bg-opacity-40">
+      <h2 className="text-2xl font-semibold mb-4 text-[#E2E2B6]">POOOLLL!!!</h2>
+      <h3 className="text-xl font-medium mb-2 text-[#E2E2B6]">{question}</h3>
       <div className="flex flex-col space-y-2 w-full px-4">
         {options.map((option, index) => option && (
           <button
             key={index}
             onClick={() => handleVote(index + 1)}
-            className={`py-2 px-4 rounded-full hover:bg-opacity-75 transition text-white text-lg font-bold ${
-              index === 0
-                ? 'bg-blue-500'
-                : index === 1
-                ? 'bg-green-500'
-                : index === 2
-                ? 'bg-red-500'
-                : 'bg-yellow-500'
-            }`}
+            className="font-bold text-sm py-1.5 px-3 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-[#E2E2B6] focus:ring-opacity-50 border border-[#E2E2B6] text-[#E2E2B6] hover:bg-[#E2E2B6] hover:text-black"
           >
-            {option} ({counts[index]})
+            {option}
           </button>
         ))}
       </div>

@@ -18,10 +18,12 @@ const TodayTasksWidget: React.FC = () => {
   }, [date]);
 
   const addTask = () => {
-    const updatedTasks = [...tasks, newTask];
-    setTasks(updatedTasks);
-    setNewTask('');
-    localStorage.setItem('todayTasks', JSON.stringify(updatedTasks));
+    if (newTask.trim() !== '') {
+      const updatedTasks = [...tasks, newTask];
+      setTasks(updatedTasks);
+      setNewTask('');
+      localStorage.setItem('todayTasks', JSON.stringify(updatedTasks));
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,24 +31,24 @@ const TodayTasksWidget: React.FC = () => {
   };
 
   return (
-    <div className="p-4 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-semibold mb-4">What did I do today?</h2>
-      <ul className="list-disc pl-5">
+    <div className="h-auto flex flex-col justify-center items-center bg-cover bg-center p-4 rounded-lg bg-[#304050] bg-opacity-75">
+      <h2 className="text-[#E2E2B6] text-2xl font-bold mb-4">What did I do today?</h2>
+      <ul className="w-full list-disc list-inside mb-4">
         {tasks.map((task, index) => (
-          <li key={index}>{task}</li>
+          <li key={index} className="text-[#E2E2B6] text-lg">{task}</li>
         ))}
       </ul>
-      <div className="mt-4 flex">
+      <div className="w-full flex space-x-2">
         <input
           type="text"
           value={newTask}
           onChange={handleInputChange}
-          className="border rounded p-2 flex-grow"
           placeholder="Add a new task"
+          className="flex-grow bg-transparent text-[#E2E2B6] placeholder-[#E2E2B6] py-1 px-3 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-[#E2E2B6] focus:ring-opacity-50"
         />
         <button
           onClick={addTask}
-          className="ml-2 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
+          className="font-bold text-sm py-1.5 px-3 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-[#E2E2B6] focus:ring-opacity-50 border border-[#E2E2B6] text-[#E2E2B6] hover:bg-[#E2E2B6] hover:text-black"
         >
           Add
         </button>

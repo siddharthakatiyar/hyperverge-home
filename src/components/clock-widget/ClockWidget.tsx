@@ -7,37 +7,22 @@ const ClockWidget: React.FC = () => {
   useEffect(() => {
     const updateClock = () => {
       const now = new Date();
-      let hours = now.getHours();
+      const hours = now.getHours();
       const minutes = now.getMinutes();
-      const seconds = now.getSeconds();
       const ampm = hours >= 12 ? 'PM' : 'AM';
 
-      hours = hours % 12;
-      hours = hours ? hours : 12; // the hour '0' should be '12'
-      const minutesStr = minutes < 10 ? `0${minutes}` : minutes;
-      const secondsStr = seconds < 10 ? `0${seconds}` : seconds;
-
-      const strTime = `${hours}:${minutesStr}:${secondsStr} ${ampm}`;
-      setTime(strTime);
-
-      const currentHour = now.getHours();
-      if (currentHour < 12) {
-        setGreeting('Good Morning');
-      } else if (currentHour < 18) {
-        setGreeting('Good Afternoon');
-      } else {
-        setGreeting('Good Evening');
-      }
+      const formattedTime = `${hours % 12 || 12}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+      setTime(formattedTime);
     };
 
-    const timerId = setInterval(updateClock, 1000);
-    return () => clearInterval(timerId);
+    updateClock();
+    const interval = setInterval(updateClock, 1000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#333', color: '#fff', fontFamily: 'Poppins, sans-serif', borderRadius: '10px', padding: '10px' }}>
-      <div style={{ fontSize: '48px', fontWeight: 'bold' }}>{time}</div>
-      <div style={{ fontSize: '24px', marginTop: '10px' }}>{greeting}</div>
+    <div className="text-center p-5 text-[#E2E2B6] bg-opacity-50 rounded-lg">
+      <h1 className="md:text-7xl font-bold m-0">{time}</h1>
     </div>
   );
 };
