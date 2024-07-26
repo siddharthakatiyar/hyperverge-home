@@ -8,6 +8,7 @@ import QuoteWidget from './components/quote-widget/QuoteWidget';
 import AnnouncementsWidget from './components/announcements-widget/AnnouncementsWidget';
 import ClockWidget from './components/clock-widget/ClockWidget';
 import hyperverge from './assets/logo/hyperverge.png';
+import FormsWidget from './components/forms-widget/FormsWidget';
 
 const App: React.FC = () => {
   return (
@@ -23,21 +24,24 @@ const App: React.FC = () => {
           </div>
         </div>
       </header>
-      <main className="flex-grow p-6 grid grid-cols-1 lg:grid-cols-4 gap-4 auto-rows-auto">
-        <div className='lg:col-span-4 flex flex-col h-96 items-center justify-center'>
+      <main className="flex-grow p-6 grid grid-cols-1 lg:grid-cols-8 gap-4 auto-rows-auto">
+        <div className='lg:col-span-8 flex flex-col h-96 items-center justify-center'>
           <ClockWidget />
           <QuoteWidget />
         </div>
-        <div className="lg:col-span-1 flex flex-col space-y-6">
+        <div className="lg:col-span-2 flex flex-col space-y-6">
           <PomodoroTimer />
           <PollingWidget />
         </div>
-        <div className="lg:col-span-2 flex flex-col space-y-6">
+        <div className="lg:col-span-4 flex flex-col space-y-6">
           <GoogleSlideWidget />
         </div>
-        <div className="lg:col-span-1 flex flex-col space-y-6">
+        <div className="lg:col-span-2 flex flex-col space-y-6">
           <MusicWidget />
           <TodayTasksWidget />
+        </div>
+        <div className="lg:col-span-3 flex flex-col space-y-6">
+          <FormsWidget />
         </div>
       </main>
     </div>
