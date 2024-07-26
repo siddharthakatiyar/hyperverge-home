@@ -9,6 +9,7 @@ import AnnouncementsWidget from './components/announcements-widget/Announcements
 import ClockWidget from './components/clock-widget/ClockWidget';
 import hyperverge from './assets/logo/hyperverge.png';
 import FormsWidget from './components/forms-widget/FormsWidget';
+import SpreadsheetWidget from './components/spreadsheet-widget/SpreadsheetWidget';
 
 const App: React.FC = () => {
   return (
@@ -42,6 +43,9 @@ const App: React.FC = () => {
         </div>
         <div className="lg:col-span-3 flex flex-col space-y-6">
           <FormsWidget />
+        </div>
+        <div className="lg:col-span-5 flex flex-col space-y-6">
+          <SpreadsheetWidget />
         </div>
       </main>
     </div>
