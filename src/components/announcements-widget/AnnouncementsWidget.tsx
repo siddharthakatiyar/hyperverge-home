@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as AlertIcon } from '../../assets/icons/alert.svg';
+import { getAnnouncements } from '../../services/announcementsService';
 
 const AnnouncementsWidget: React.FC = () => {
-  const [announcements, setAnnouncements] = useState<string[]>([
-    'Welcome to the HyperVerge home page!',
-    "Don't forget to submit your daily report.",
-    'Team meeting on Friday at 3 PM.'
-  ]);
+  const [announcements, setAnnouncements] = useState<string[]>([]);
   const [showPopup, setShowPopup] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchAnnouncements = async () => {
+      try {
+        const fetchedAnnouncements = await getAnnouncements();
+        setAnnouncements(fetchedAnnouncements || []);
+      } catch (error) {
+        console.error('Error fetching announcements:', error);
+      }
+    };
+
+    fetchAnnouncements();
+  }, []);
 
   const handlePopupClick = () => {
     setShowPopup(!showPopup);
