@@ -10,6 +10,7 @@ import ClockWidget from './components/clock-widget/ClockWidget';
 import hyperverge from './assets/logo/hyperverge.png';
 import FormsWidget from './components/forms-widget/FormsWidget';
 import SpreadsheetWidget from './components/spreadsheet-widget/SpreadsheetWidget';
+import SearchWidget from './components/search-widget/SearchWidget';
 
 const App: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ const App: React.FC = () => {
         <div className='lg:col-span-8 flex flex-col h-96 items-center justify-center'>
           <ClockWidget />
           <QuoteWidget />
+          <SearchWidget />
         </div>
         <div className="lg:col-span-2 flex flex-col space-y-6">
           <PomodoroTimer />
