@@ -1,46 +1,112 @@
-# Getting Started with Create React App
+# HyperVerge Home
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the HyperVerge Home project! This repository contains the code for a Chrome extension that transforms your new tab page into a digital collaboration tool. This extension includes various widgets such as a clock, quote of the day, Google Slides, Pomodoro timer, music widget, polling, and task management, among others.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Widgets](#widgets)
+- [Customization](#customization)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Clock Widget:** Displays current time and a greeting message.
+- **Quote Widget:** Fetches and displays a quote of the day.
+- **Pomodoro Timer:** Helps in managing work and break intervals.
+- **Music Widget:** Embedded Spotify playlist.
+- **Polling Widget:** Allows users to vote on various polls.
+- **Tasks Widget:** Manage and track daily tasks.
+- **Google Slides Widget:** Displays slides for presentations.
+- **Google Forms Widget:** Embedded Google Forms.
+- **Google Sheets Widget:** Displays data from Google Sheets.
+- **Search Widget:** Google Custom Search.
+- **Announcements Widget:** Displays important announcements with a scrollable view.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/hyperverge-home.git
+    cd hyperverge-home
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-### `npm run build`
+3. **Build the project:**
+    ```bash
+    npm run build
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Copy manifest:**
+    - Copy the manifest.json file in the `build` folder
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. **Load the extension in Chrome:**
+    - Open Chrome and go to `chrome://extensions/`
+    - Enable "Developer mode"
+    - Click "Load unpacked" and select the `build` folder
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+Once installed, open a new tab in Chrome to see the HyperVerge Home extension in action. The initial view includes the clock and quote widgets. Scroll down to see other widgets like the Pomodoro timer, music widget, Google Slides, etc.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Widgets
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Clock Widget
+Displays the current time and a greeting message based on the time of day.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Quote Widget
+Fetches and displays a random quote of the day from the Quotable API.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Pomodoro Timer
+Helps you manage work and break intervals with customizable time settings.
 
-## Learn More
+### Music Widget
+Embedded Spotify playlist for background music.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Polling Widget
+Allows users to vote on polls fetched from Google Sheets.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Tasks Widget
+Manage and track your daily tasks with local storage support.
+
+### Google Slides Widget
+Displays Google Slides for easy presentation access.
+
+### Google Forms Widget
+Embedded Google Forms for quick form filling.
+
+### Google Sheets Widget
+Displays data from Google Sheets.
+
+### Search Widget
+Google Custom Search for quick web searches.
+
+### Announcements Widget
+Displays important announcements in a scrollable view.
+
+## Customization
+
+You can customize the background, widget styles, and other UI elements by modifying the CSS and components in the `src` directory.
+
+## Contributing
+
+We welcome contributions to improve this project. To contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -am 'Add some feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Create a new Pull Request.
+
+Please make sure to follow the [contributing guidelines](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
