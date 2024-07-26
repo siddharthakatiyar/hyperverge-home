@@ -1,69 +1,69 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ReactComponent as RestartIcon } from '../../assets/icons/restart.svg';
+import React, { useState, useEffect, useRef } from 'react'
+import { ReactComponent as RestartIcon } from '../../assets/icons/restart.svg'
 
 const PomodoroTimer = () => {
-  const pomodoroTime = 25 * 60; // 25 minutes
-  const shortBreakTime = 5 * 60; // 5 minutes
-  const longBreakTime = 30 * 60; // 30 minutes
-  const [timeLeft, setTimeLeft] = useState(pomodoroTime);
-  const [isActive, setIsActive] = useState(false);
-  const [activeMode, setActiveMode] = useState('pomodoro');
-  const intervalRef = useRef<number | null>(null);
+  const pomodoroTime = 25 * 60 // 25 minutes
+  const shortBreakTime = 5 * 60 // 5 minutes
+  const longBreakTime = 30 * 60 // 30 minutes
+  const [timeLeft, setTimeLeft] = useState(pomodoroTime)
+  const [isActive, setIsActive] = useState(false)
+  const [activeMode, setActiveMode] = useState('pomodoro')
+  const intervalRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (isActive) {
       intervalRef.current = window.setInterval(() => {
-        setTimeLeft((time) => (time > 0 ? time - 1 : 0));
-      }, 1000);
+        setTimeLeft(time => (time > 0 ? time - 1 : 0))
+      }, 1000)
     } else if (!isActive && timeLeft !== 0 && intervalRef.current !== null) {
-      clearInterval(intervalRef.current);
+      clearInterval(intervalRef.current)
     }
 
     return () => {
       if (intervalRef.current !== null) {
-        clearInterval(intervalRef.current);
+        clearInterval(intervalRef.current)
       }
-    };
-  }, [isActive, timeLeft]);
+    }
+  }, [isActive, timeLeft])
 
   const toggleTimer = () => {
-    setIsActive(!isActive);
-  };
+    setIsActive(!isActive)
+  }
 
   const resetTimer = () => {
-    setIsActive(false);
-    if (activeMode === 'pomodoro') setTimeLeft(pomodoroTime);
-    else if (activeMode === 'short break') setTimeLeft(shortBreakTime);
-    else setTimeLeft(longBreakTime);
-  };
+    setIsActive(false)
+    if (activeMode === 'pomodoro') setTimeLeft(pomodoroTime)
+    else if (activeMode === 'short break') setTimeLeft(shortBreakTime)
+    else setTimeLeft(longBreakTime)
+  }
 
   const setPomodoro = () => {
-    setIsActive(false);
-    setTimeLeft(pomodoroTime);
-    setActiveMode('pomodoro');
-  };
+    setIsActive(false)
+    setTimeLeft(pomodoroTime)
+    setActiveMode('pomodoro')
+  }
 
   const setShortBreak = () => {
-    setIsActive(false);
-    setTimeLeft(shortBreakTime);
-    setActiveMode('short break');
-  };
+    setIsActive(false)
+    setTimeLeft(shortBreakTime)
+    setActiveMode('short break')
+  }
 
   const setLongBreak = () => {
-    setIsActive(false);
-    setTimeLeft(longBreakTime);
-    setActiveMode('long break');
-  };
+    setIsActive(false)
+    setTimeLeft(longBreakTime)
+    setActiveMode('long break')
+  }
 
   const formatTime = () => {
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  };
+    const minutes = Math.floor(timeLeft / 60)
+    const seconds = timeLeft % 60
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+  }
 
   const buttonClass = (mode: string) =>
     `font-bold text-sm py-1.5 px-3 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-[#E2E2B6] focus:ring-opacity-50
-     ${activeMode === mode ? 'bg-[#E2E2B6] text-black' : 'border border-[#E2E2B6] text-[#E2E2B6] hover:bg-[#E2E2B6] hover:text-black'}`;
+     ${activeMode === mode ? 'bg-[#E2E2B6] text-black' : 'border border-[#E2E2B6] text-[#E2E2B6] hover:bg-[#E2E2B6] hover:text-black'}`
 
   return (
     <div className="h-auto flex flex-col justify-center items-center bg-cover bg-center p-4 rounded-lg bg-[#304050] bg-opacity-75">
@@ -78,7 +78,9 @@ const PomodoroTimer = () => {
           long break
         </button>
       </div>
-      <div className="text-[#E2E2B6] text-5xl font-bold mb-8">{formatTime()}</div>
+      <div className="text-[#E2E2B6] text-5xl font-bold mb-8">
+        {formatTime()}
+      </div>
       <div className="flex space-x-4">
         <button
           onClick={toggleTimer}
@@ -93,7 +95,7 @@ const PomodoroTimer = () => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PomodoroTimer;
+export default PomodoroTimer
